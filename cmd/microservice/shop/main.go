@@ -25,3 +25,13 @@ func main() {
 		panic(err)
 	}
 }
+
+func createShopMicroservice() *chi.Mux {
+	shopProductRepo := shop_infra_product.NewMemoryRepository()
+
+	r := cmd.CreateRouter()
+	shop_interfaces_public_http.AddRoutes(r, shopProductRepo)
+	shop_interfaces_private_http.AddRoutes(r, shopProductRepo)
+
+	return r
+}
