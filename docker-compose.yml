@@ -11,6 +11,15 @@ services:
       - ./cmd/:$GO_PROJECT_DIR/cmd/
       - ./pkg/:$GO_PROJECT_DIR/pkg/
   payments:
+    build: .
+    entrypo0int: []
+    volumes:
+    environment: 
+      - SHOP_RABBITMQ_ADDR=rabbitmq:5672
+      - SHOPRABBITMQ_ORDERS_TO_PAY_QUEUE=orders-to-pay
+      - SHOP_ORDERS_SERVICE_ADDR=http://shop:8080
+    depends_on:
+    - rabbitmq
   orders:
     build: .
     entrypoint: []
@@ -25,3 +34,12 @@ services:
     depends_on:
       - rabbitmq
   shop:
+    build: .
+    entrypoint: []
+    ports: 
+      - "8071:8080"
+    volumes:
+    environment:
+      - SHOP_SHOP_SERVICE_BIND_ADDR=:8080
+    depends_on:
+      - rabbitmq
