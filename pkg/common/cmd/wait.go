@@ -17,6 +17,6 @@ func WaitForService(host string) {
 			log.Printf("%s is up!", host)
 			return
 		}
+		time.Sleep(time.Millisecond * 500)
 	}
-	time.Sleep(time.Millisecond * 500)
 }
