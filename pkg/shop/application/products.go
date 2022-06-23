@@ -17,6 +17,16 @@ func (s ProductsService) AllProducts() {
 
 }
 
-func (s ProductsService) AddProduct() error {
+type AddProductCommand struct {
+	ID            string
+	Name          string
+	Description   string
+	PriceCents    uint
+	PriceCurrency string
+}
 
+func (s ProductsService) AddProduct(cmd AddProductCommand) error {
+	price.NewPrice(cmd.PriceCents, cmd.PriceCurrency)
+	products.NewProduct(products.ID(cmd.ID), cmd.Name, cmd.Description, price)
+	s.repo.Save
 }
