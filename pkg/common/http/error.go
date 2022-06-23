@@ -9,8 +9,8 @@ import (
 type ErrResponse struct {
 	Err            error  `json:"-"`
 	HTTPStatusCode int    `json:"-"`
-	AppCode        int64  `json:"code, omitempty"`
-	ErrorText      string `json:"error, omitempty"`
+	AppCode        int64  `json:"code,omitempty"`
+	ErrorText      string `json:"error,omitempty"`
 }
 
 func (e *ErrResponse) Render(w http.ResponseWriter, r *http.Request) error {
