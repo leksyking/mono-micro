@@ -1,5 +1,10 @@
 package application
 
+import (
+	"github.com/leksyking/monolith-microservice/pkg/common/price"
+	"github.com/leksyking/monolith-microservice/pkg/common/products"
+)
+
 type productReadModel interface {
 	AllProducts() ([]products.Product, err)
 }
