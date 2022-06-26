@@ -2,11 +2,11 @@ package application
 
 import (
 	"github.com/leksyking/monolith-microservice/pkg/common/price"
-	"github.com/leksyking/monolith-microservice/pkg/common/products"
+	"github.com/leksyking/monolith-microservice/pkg/shop/domain/products"
 )
 
 type productReadModel interface {
-	AllProducts() ([]products.Product, err)
+	AllProducts() ([]products.Product, error)
 }
 
 type ProductsService struct {
@@ -18,7 +18,7 @@ func NewProductsService() ProductsService {
 
 }
 
-func (s ProductsService) AllProducts() {
+func (s ProductsService) AllProducts() ([]products.Product, error) {
 
 }
 
