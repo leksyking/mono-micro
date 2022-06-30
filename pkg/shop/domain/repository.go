@@ -6,5 +6,5 @@ var ErrNotFound = errors.New("Product not found")
 
 type Repository interface {
 	Save(*products.Product) error
-	ByID(ID) (*product, error)
+	ByID(ID) (*products.Product, error)
 }
