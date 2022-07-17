@@ -1,12 +1,14 @@
 package application
 
+import "github.com/leksyking/monolith-microservice/pkg/orders/domain/orders"
+
 type productsService interface {
 }
 
 type paymentsService interface {
 }
 
-type ordersService struct {
+type OrdersService struct {
 }
 
 func NewOrdersService() {
