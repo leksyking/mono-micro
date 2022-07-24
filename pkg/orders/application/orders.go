@@ -39,7 +39,7 @@ type PlaceOrderCommandAddress struct {
 	Country    string
 }
 
-func (s ordersService) PlaceOrder(cmd PlaceOrderCommand) error {
+func (s OrdersService) PlaceOrder(cmd PlaceOrderCommand) error {
 	address, err := orders.NewAddress(
 		cmd.Address.Name,
 		cmd.Address.Street,
@@ -73,7 +73,7 @@ type MarkOrderAsPaidCommand struct {
 	OrdersID orders.ID
 }
 
-func (s ordersService) MarkOrderAsPaid(cmd MarkOrderAsPaidCommand) error {
+func (s OrdersService) MarkOrderAsPaid(cmd MarkOrderAsPaidCommand) error {
 	o, err := s.orderRepository.ByID(cmd.OrderID)
 	if err != nil{
 		return errors.Wrapf(err, "cannot get order %s", cmd.OrderID)
@@ -86,7 +86,7 @@ func (s ordersService) MarkOrderAsPaid(cmd MarkOrderAsPaidCommand) error {
 	return nil
 }
 
-func (s ordersService) OrderByID(id orders.ID) (orders.Order, error) {
+func (s OrdersService) OrderByID(id orders.ID) (orders.Order, error) {
 	o, err := s.ordersRepository.ByID(id)
 	if err != nil {
 		return orders.Order{}, errors.Wrapf(err, "Cannot get order %s", id)
